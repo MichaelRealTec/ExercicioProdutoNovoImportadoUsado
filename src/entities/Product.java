@@ -1,5 +1,7 @@
 package entities;
 
+import java.text.Format;
+
 public class Product {
 	// Atributo
 	private String name;
@@ -37,7 +39,9 @@ public class Product {
 	
 	// Método
 	public String priceTag() {
-		return null;
+		return name
+				+ " $ "
+				+ String.format("%.2f", price);
 	}
 	
 }
