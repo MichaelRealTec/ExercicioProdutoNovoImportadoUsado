@@ -1,39 +1,40 @@
 package entities;
 
-public class ImportedProduct extends Product{
+//import java.time.format.DateTimeFormatter;
+
+public class ImportedProduct extends Product {
 	// Atributo
 	private Double customsFee;
-	
+
 	// Método Getter e Setter
-	
+
 	public void setCustomsFee(Double customsFee) {
 		this.customsFee = customsFee;
 	}
-	
+
 	public Double getCustomsFee() {
 		return customsFee;
 	}
-	
+
 	// Método Construtor
 	public ImportedProduct() {
-		
+
 	}
-	
-	public ImportedProduct(Double customsFee) {
+
+	public ImportedProduct(String name, Double price, Double customsFee) {
+		super(name, price);
 		this.customsFee = customsFee;
 	}
-	
+
 	// Método
 	@Override
 	public String priceTag() {
-		return getName()
-				+ " $ "
-				+ String.format("%.2f (Customs date: %.2f\n", getPrice(), getCustomsFee());
+		totalPrice();
+		return getName() + " $ " + String.format("%.2f (Customs fee: $ %.2f)", totalPrice(), getCustomsFee());
 	}
-	
+
 	public Double totalPrice() {
-		return 0.0;
+		return getPrice() + getCustomsFee();
 	}
-	
-	
+
 }
